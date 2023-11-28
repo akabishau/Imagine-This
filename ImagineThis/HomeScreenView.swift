@@ -9,11 +9,22 @@ import SwiftUI
 
 struct HomeScreenView: View {
 	
-	var onStart: () -> ()
+	@State private var selectedLevel: DifficultyLevel = .easy
+	
+	var onStart: () -> Void
 	
 	var body: some View {
-		Button(action: onStart) {
-			Text("Start")
+		VStack {
+			Spacer()
+			HStack(spacing: 10) {
+				ForEach(DifficultyLevel.allCases, id: \.self) { level in
+					LevelButton(level: level, selectedLevel: $selectedLevel)
+				}
+			}
+			Spacer()
+			Button(action: onStart) {
+				Text("Start")
+			}
 		}
 	}
 }
