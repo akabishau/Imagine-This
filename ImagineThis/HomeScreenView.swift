@@ -9,28 +9,65 @@ import SwiftUI
 
 struct HomeScreenView: View {
 	
-	@State private var selectedLevel: DifficultyLevel = .easy
+	@StateObject var userSelections = UserSelections()
+	@State private var showCardsView = false
 	
-	var onStart: () -> Void
+	
+	var body: some View {
+		ZStack {
+			if showCardsView {
+				CardsScreenView(userSelections: userSelections) {
+					withAnimation {
+						showCardsView = false
+					}
+				}
+			} else {
+				VStack {
+					HStack(spacing: 10) {
+						ForEach(DifficultyLevel.allCases, id: \.self) { level in
+							LevelButton(level: level, selectedLevel: $userSelections.level)
+						}
+					}
+					Spacer()
+					CategoryView(selectedCategory: $userSelections.category)
+					Spacer()
+					Button("Start") {
+						withAnimation {
+							showCardsView = true
+						}
+					}
+				}
+			}
+		}
+		.transition(.asymmetric(insertion: .opacity, removal: .opacity))
+	}
+}
+
+// TODO: - Move to the separate file when complete
+struct CategoryView: View {
+	
+	@Binding var selectedCategory: Category
 	
 	var body: some View {
 		VStack {
-			Spacer()
-			HStack(spacing: 10) {
-				ForEach(DifficultyLevel.allCases, id: \.self) { level in
-					LevelButton(level: level, selectedLevel: $selectedLevel)
+			Text(selectedCategory.rawValue)
+			TabView(selection: $selectedCategory) {
+				ForEach(Category.allCases, id: \.self) { category in
+					Image(category.rawValue)
+						.resizable()
+						.scaledToFit()
+						.tag(category)
 				}
 			}
-			Spacer()
-			Button(action: onStart) {
-				Text("Start")
-			}
+			.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+			.frame(width: 300, height: 400)
+			.background(Color.blue)
+			
 		}
 	}
 }
 
+
 #Preview {
-	HomeScreenView {
-		print("start button clicked")
-	}
+	HomeScreenView()
 }

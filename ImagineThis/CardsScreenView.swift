@@ -9,17 +9,26 @@ import SwiftUI
 
 struct CardsScreenView: View {
 	
+	@ObservedObject var userSelections: UserSelections
+	
 	var onBack: () -> Void
 	
 	var body: some View {
-		Button(action: onBack) {
-			Text("Back")
+		VStack {
+			Button(action: onBack) {
+				Text("Back")
+			}
+			Spacer()
+			Text("Level: \(String(userSelections.level.imageName))")
+			Text("Category: \(userSelections.category.rawValue)")
+			Spacer()
+			
 		}
 	}
 }
 
 #Preview {
-	CardsScreenView {
+	CardsScreenView(userSelections: UserSelections()) {
 		print("back button tapped")
 	}
 }
