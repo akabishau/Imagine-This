@@ -50,7 +50,10 @@ struct CategoryView: View {
 	
 	var body: some View {
 		VStack {
-			Text(selectedCategory.rawValue)
+			Image("\(selectedCategory.rawValue)Label")
+				.resizable()
+				.scaledToFit()
+				.frame(width: 150)
 			TabView(selection: $selectedCategory) {
 				ForEach(Category.allCases, id: \.self) { category in
 					Image(category.rawValue)
