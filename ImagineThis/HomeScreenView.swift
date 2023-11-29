@@ -15,6 +15,11 @@ struct HomeScreenView: View {
 	
 	var body: some View {
 		ZStack {
+			Image("background")
+				.resizable()
+				.scaledToFill()
+				.edgesIgnoringSafeArea(.all)
+			
 			if showCardsView {
 				CardsScreenView(userSelections: userSelections) {
 					withAnimation {
@@ -23,6 +28,7 @@ struct HomeScreenView: View {
 				}
 			} else {
 				VStack {
+					Spacer()
 					HStack(spacing: 10) {
 						ForEach(DifficultyLevel.allCases, id: \.self) { level in
 							LevelButton(level: level, selectedLevel: $userSelections.level)
@@ -31,15 +37,25 @@ struct HomeScreenView: View {
 					Spacer()
 					CategoryView(selectedCategory: $userSelections.category)
 					Spacer()
-					Button("Start") {
-						withAnimation {
-							showCardsView = true
-						}
-					}
+					startButton()
 				}
 			}
 		}
 		.transition(.asymmetric(insertion: .opacity, removal: .opacity))
+	}
+	
+	@ViewBuilder
+	private func startButton() -> some View {
+		Button {
+			withAnimation {
+				showCardsView = true
+			}
+		} label: {
+			Image("start")
+				.resizable()
+				.scaledToFit()
+				.frame(height: 80)
+		}
 	}
 }
 
@@ -64,8 +80,8 @@ struct CategoryView: View {
 				}
 			}
 			.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-			.frame(width: 300, height: 400)
-			.background(Color.blue)
+			.frame(height: 350)
+
 			
 			CategoryIndicatorView(numberOfPages: Category.allCases.count, currentPageIndex: selectedCategory.index)
 			
@@ -94,8 +110,4 @@ struct CategoryIndicatorView: View {
 
 #Preview {
 	HomeScreenView()
-}
-
-#Preview {
-	CategoryIndicatorView(numberOfPages: 4, currentPageIndex: 2)
 }
