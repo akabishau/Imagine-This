@@ -54,23 +54,48 @@ struct CategoryView: View {
 				.resizable()
 				.scaledToFit()
 				.frame(width: 150)
+			
 			TabView(selection: $selectedCategory) {
 				ForEach(Category.allCases, id: \.self) { category in
-					Image(category.rawValue)
+					Image(category.imageName)
 						.resizable()
 						.scaledToFit()
 						.tag(category)
 				}
 			}
-			.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+			.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
 			.frame(width: 300, height: 400)
 			.background(Color.blue)
+			
+			CategoryIndicatorView(numberOfPages: Category.allCases.count, currentPageIndex: selectedCategory.index)
 			
 		}
 	}
 }
 
 
+struct CategoryIndicatorView: View {
+	
+	let numberOfPages: Int
+	var currentPageIndex: Int
+	
+	var body: some View {
+		HStack {
+			ForEach(0..<numberOfPages, id: \.self) { index in
+				Image(currentPageIndex == index ? "active" : "inactive")
+					.resizable()
+					.frame(width: 24, height: 24)
+			}
+		}
+		.padding(.vertical)
+	}
+}
+
+
 #Preview {
 	HomeScreenView()
+}
+
+#Preview {
+	CategoryIndicatorView(numberOfPages: 4, currentPageIndex: 2)
 }

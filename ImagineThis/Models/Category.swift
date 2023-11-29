@@ -12,4 +12,12 @@ enum Category: String, CaseIterable {
 	case magic
 	case horror
 	case random
+	
+	var index: Int {
+		Category.allCases.firstIndex(of: self) ?? 0
+	}
+	
+	var imageName: String {
+		self.rawValue.lowercased()
+	}
 }
