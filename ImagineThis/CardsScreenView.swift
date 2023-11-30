@@ -14,16 +14,35 @@ struct CardsScreenView: View {
 	var onBack: () -> Void
 	
 	var body: some View {
-		VStack {
-			Button(action: onBack) {
-				Text("Back")
+		ZStack(alignment: .bottom) {
+			Image("grass")
+				.resizable()
+				.scaledToFit()
+			VStack {
+				HStack {
+					backButton()
+					Spacer()
+				}
+				Spacer()
+				
+				Text("Level: \(String(userSelections.level.imageName))")
+				Text("Category: \(userSelections.category.rawValue)")
+				
+				Spacer()
 			}
-			Spacer()
-			Text("Level: \(String(userSelections.level.imageName))")
-			Text("Category: \(userSelections.category.rawValue)")
-			Spacer()
-			
+			.padding()
 		}
+		.edgesIgnoringSafeArea(.bottom)
+	}
+	
+	@ViewBuilder
+	private func backButton() -> some View {
+		Button(action: onBack) {
+			Image("back")
+				.resizable()
+				.scaledToFit()
+		}
+		.frame(width: 150)
 	}
 }
 

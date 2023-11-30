@@ -18,7 +18,7 @@ struct HomeScreenView: View {
 			Image("background")
 				.resizable()
 				.scaledToFill()
-				.edgesIgnoringSafeArea(.all)
+				.ignoresSafeArea(.all)
 			
 			if showCardsView {
 				CardsScreenView(userSelections: userSelections) {
