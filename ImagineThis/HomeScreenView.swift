@@ -30,7 +30,7 @@ struct HomeScreenView: View {
 				VStack {
 					Spacer()
 					HStack(spacing: 10) {
-						ForEach(DifficultyLevel.allCases, id: \.self) { level in
+						ForEach(Level.allCases, id: \.self) { level in
 							LevelButton(level: level, selectedLevel: $userSelections.level)
 						}
 					}

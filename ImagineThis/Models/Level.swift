@@ -7,21 +7,21 @@
 
 import Foundation
 
-enum DifficultyLevel: CaseIterable {
+enum Level: String, CaseIterable {
 	case easy
 	case normal
 	case hard
 	
 	
 	var imageName: String {
-		switch self {
-			case .easy: "easy"
-			case .normal: "normal"
-			case .hard: "hard"
-		}
+		self.rawValue
 	}
 	
 	var selectedImageName: String {
-		"\(imageName)Selected"
+		"\(self.rawValue)Selected"
+	}
+	
+	var label: String {
+		"\(self.rawValue)Label"
 	}
 }

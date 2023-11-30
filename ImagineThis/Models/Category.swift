@@ -20,4 +20,8 @@ enum Category: String, CaseIterable {
 	var imageName: String {
 		self.rawValue.lowercased()
 	}
+	
+	var label: String {
+		"\(self.rawValue)Label"
+	}
 }

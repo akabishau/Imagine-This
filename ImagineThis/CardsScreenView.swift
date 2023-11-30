@@ -23,11 +23,12 @@ struct CardsScreenView: View {
 					backButton()
 					Spacer()
 				}
-				Spacer()
-				
-				Text("Level: \(String(userSelections.level.imageName))")
-				Text("Category: \(userSelections.category.rawValue)")
-				
+				// TODO: - redo hardcoded numbers
+				selectionsView()
+					.padding(.top, 150)
+					.padding(.bottom, 24)
+				Rectangle()
+					.frame(width: 300, height: 180)
 				Spacer()
 			}
 			.padding()
@@ -43,6 +44,24 @@ struct CardsScreenView: View {
 				.scaledToFit()
 		}
 		.frame(width: 150)
+	}
+	
+	
+	@ViewBuilder
+	private func selectionsView() -> some View {
+		HStack {
+			
+			Image(userSelections.category.label)
+				.resizable()
+				.scaledToFit()
+				.frame(width: 100)
+			Image("divider")
+			Image(userSelections.level.label)
+				.resizable()
+				.scaledToFit()
+				.frame(width: 100)
+			
+		}
 	}
 }
 
