@@ -30,7 +30,7 @@ struct HomeScreenView: View {
 				VStack {
 					Spacer()
 					HStack(spacing: 10) {
-						ForEach(Level.allCases, id: \.self) { level in
+						ForEach(Complexity.allCases, id: \.self) { level in
 							LevelButton(level: level, selectedLevel: $userSelections.level)
 						}
 					}
@@ -62,7 +62,7 @@ struct HomeScreenView: View {
 // TODO: - Move to the separate file when complete
 struct CategoryView: View {
 	
-	@Binding var selectedCategory: Category
+	@Binding var selectedCategory: Topic
 	
 	var body: some View {
 		VStack {
@@ -72,7 +72,7 @@ struct CategoryView: View {
 				.frame(width: 150)
 			
 			TabView(selection: $selectedCategory) {
-				ForEach(Category.allCases, id: \.self) { category in
+				ForEach(Topic.allCases, id: \.self) { category in
 					Image(category.imageName)
 						.resizable()
 						.scaledToFit()
@@ -83,7 +83,7 @@ struct CategoryView: View {
 			.frame(height: 350)
 
 			
-			CategoryIndicatorView(numberOfPages: Category.allCases.count, currentPageIndex: selectedCategory.index)
+			CategoryIndicatorView(numberOfPages: Topic.allCases.count, currentPageIndex: selectedCategory.index)
 			
 		}
 	}

@@ -9,6 +9,6 @@ import Foundation
 
 final class UserSelections: ObservableObject {
 	
-	@Published var level: Level = .normal
-	@Published var category: Category = .random
+	@Published var level: Complexity = .normal
+	@Published var category: Topic = .random
 }
