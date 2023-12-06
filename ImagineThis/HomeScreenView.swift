@@ -31,11 +31,11 @@ struct HomeScreenView: View {
 					Spacer()
 					HStack(spacing: 10) {
 						ForEach(Complexity.allCases, id: \.self) { level in
-							LevelButton(level: level, selectedLevel: $userSelections.level)
+							LevelButton(level: level, selectedLevel: $userSelections.complexity)
 						}
 					}
 					Spacer()
-					CategoryView(selectedCategory: $userSelections.category)
+					CategoryView(selectedCategory: $userSelections.topic)
 					Spacer()
 					startButton()
 				}

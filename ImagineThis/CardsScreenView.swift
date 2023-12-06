@@ -10,6 +10,7 @@ import SwiftUI
 import SwiftUI
 
 struct CardsScreenView: View {
+	
 	@State private var rotations: [Double] = [3, -3, 0]
 	@State private var sentences = ["A brave unicorn is teaching a group of kittens the art of flying.",
 					 "An adventurous penguin is discovering hidden treasures in a mystical forest.",
@@ -18,7 +19,12 @@ struct CardsScreenView: View {
 	@ObservedObject var userSelections: UserSelections
 	@State private var dragOffset = CGSize.zero
 	
+	private let promptManager = PromptManager()
+	
 	var onBack: () -> Void
+	
+	
+	
 	
 	var body: some View {
 		ZStack(alignment: .bottom) {
@@ -59,6 +65,9 @@ struct CardsScreenView: View {
 			.padding()
 		}
 		.edgesIgnoringSafeArea(.bottom)
+		.onAppear {
+			generateSentences()
+		}
 	}
 	
 	private func moveTopCardToEnd() {
@@ -84,16 +93,22 @@ struct CardsScreenView: View {
 	@ViewBuilder
 	private func selectionsView() -> some View {
 		HStack {
-			Image(userSelections.category.label)
+			Image(userSelections.topic.label)
 				.resizable()
 				.scaledToFit()
 				.frame(width: 100)
 			Image("divider")
-			Image(userSelections.level.label)
+			Image(userSelections.complexity.label)
 				.resizable()
 				.scaledToFit()
 				.frame(width: 100)
 		}
+	}
+	
+	private func generateSentences() {
+		sentences = (0..<3).map({ _ in
+			promptManager.generatePrompt(for: userSelections.topic, complexity: userSelections.complexity)
+		})
 	}
 }
 
