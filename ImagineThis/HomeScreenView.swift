@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeScreenView: View {
 	
+	let libraryManager: LibraryManager
+	
 	@StateObject var userSelections = UserSelections()
 	@State private var showCardsView = false
 	
@@ -21,11 +23,14 @@ struct HomeScreenView: View {
 				.ignoresSafeArea(.all)
 			
 			if showCardsView {
-				CardsScreenView(userSelections: userSelections) {
+				
+				let wordSet = libraryManager.words(for: userSelections.topic, complexity: userSelections.complexity)
+				
+				CardsScreenView(userSelections: userSelections, wordSet: wordSet, onBack: {
 					withAnimation {
 						showCardsView = false
 					}
-				}
+				})
 			} else {
 				VStack {
 					Spacer()
@@ -109,5 +114,5 @@ struct CategoryIndicatorView: View {
 
 
 #Preview {
-	HomeScreenView()
+	HomeScreenView(libraryManager: LibraryManager())
 }

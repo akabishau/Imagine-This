@@ -7,6 +7,24 @@
 
 import Foundation
 
+// role the word can play in the sentence
+enum WordType {
+	case subject
+	case verb
+	case directObject
+	case indirectObject
+	case adjective
+	case adverb
+	case preposition
+}
+
+
+// need to separate words by categories and organize them by sentence topics later
+enum WordCategory: String, Hashable, CaseIterable {
+	case magic, urban, horror, general
+}
+
+
 struct Word: Hashable {
 	let value: String
 	let types: [WordType]
@@ -16,35 +34,18 @@ struct Word: Hashable {
 }
 
 
-enum WordType {
-	case subject // doer
-	case verb
-	case directObject // represents the noun that directly receives the action of the verb.
-	case indirectObject // represents the noun to or for whom the action is performed.
-	case adjective // describes or modifies a noun.
-	case adverb // modifies a verb, an adjective, or another adverb, indicating when, how, where, why, or to what extent the action is performed.
-	case preposition // shows the relationship between its object and another word in the sentence (often used with direct or indirect objects).
-}
-
-
-enum WordCategory: String, Hashable, CaseIterable {
-	case magic, urban, horror, general
-}
-
-
 extension Word {
 	static let words: [Word] = [
 		// Subjects
 		Word(value: "teacher", types: [.subject], categories: [.general], gerund: nil, prepositions: nil),
 		Word(value: "student", types: [.subject], categories: [.general], gerund: nil, prepositions: nil),
 		Word(value: "doctor", types: [.subject], categories: [.general], gerund: nil, prepositions: nil),
-		// ... and so on until 10 entries for subjects ...
 		
 		// Verbs with gerunds
 		Word(value: "run", types: [.verb], categories: [.general], gerund: "running", prepositions: nil),
 		Word(value: "talk", types: [.verb], categories: [.general], gerund: "talking", prepositions: nil),
 		Word(value: "read", types: [.verb], categories: [.general], gerund: "reading", prepositions: nil),
-		// ... and so on until 10 entries for verbs ...
+		Word(value: "kill", types: [.verb], categories: [.general], gerund: "killing", prepositions: nil),
 		
 		// Direct Objects with prepositions
 		Word(value: "book", types: [.directObject], categories: [.general], gerund: nil, prepositions: ["about", "on"]),
@@ -66,7 +67,6 @@ extension Word {
 		Word(value: "friend", types: [.indirectObject], categories: [.general], gerund: nil, prepositions: nil),
 		Word(value: "neighbor", types: [.indirectObject], categories: [.general], gerund: nil, prepositions: nil),
 		Word(value: "stranger", types: [.indirectObject], categories: [.general], gerund: nil, prepositions: nil),
-		// ... and so on until 10 entries for indirect objects ...
 		
 		// multi type objects
 		Word(value: "children", types: [.indirectObject, .directObject], categories: [.general], gerund: nil, prepositions: ["to", "for"]),
@@ -89,10 +89,5 @@ extension Word {
 		Word(value: "quickly", types: [.adverb], categories: [.general], gerund: nil, prepositions: nil),
 		Word(value: "slowly", types: [.adverb], categories: [.general], gerund: nil, prepositions: nil),
 		Word(value: "loudly", types: [.adverb], categories: [.general], gerund: nil, prepositions: nil),
-		
-		// Prepositions
-		Word(value: "above", types: [.preposition], categories: [.general], gerund: nil, prepositions: nil),
-		Word(value: "below", types: [.preposition], categories: [.general], gerund: nil, prepositions: nil),
-		Word(value: "across", types: [.preposition], categories: [.general], gerund: nil, prepositions: nil),
 	]
 }

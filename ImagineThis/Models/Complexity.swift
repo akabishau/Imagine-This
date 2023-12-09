@@ -24,4 +24,13 @@ enum Complexity: String, CaseIterable {
 	var label: String {
 		"\(self.rawValue)Label"
 	}
+	
+	
+	var sentenceStructure: [WordType] {
+		switch self {
+			case .easy: [.subject, .verb, .directObject]
+			case .normal:  [.adjective, .subject, .verb, .indirectObject, .directObject]
+			case .hard: [.adjective, .subject, .adverb, .verb, .adjective, .directObject, .preposition, .indirectObject]
+		}
+	}
 }

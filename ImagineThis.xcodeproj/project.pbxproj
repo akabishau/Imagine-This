@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B57E70B2B2212FC00AB1690 /* LibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57E70A2B2212FC00AB1690 /* LibraryManager.swift */; };
 		5BD49EED2B20C7710087E472 /* PromptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD49EEC2B20C7710087E472 /* PromptManager.swift */; };
 		5BD49EEF2B20D9720087E472 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD49EEE2B20D9720087E472 /* Word.swift */; };
 		5BD653DF2B0D1FA6005B00E7 /* ImagineThisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD653DE2B0D1FA6005B00E7 /* ImagineThisApp.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B57E70A2B2212FC00AB1690 /* LibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryManager.swift; sourceTree = "<group>"; };
 		5BD49EEC2B20C7710087E472 /* PromptManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptManager.swift; sourceTree = "<group>"; };
 		5BD49EEE2B20D9720087E472 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		5BD653DB2B0D1FA6005B00E7 /* ImagineThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagineThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,7 @@
 			children = (
 				5BD49EEE2B20D9720087E472 /* Word.swift */,
 				5BD49EEC2B20C7710087E472 /* PromptManager.swift */,
+				5B57E70A2B2212FC00AB1690 /* LibraryManager.swift */,
 				5BD6541E2B164289005B00E7 /* Views */,
 				5BD6541B2B1641DE005B00E7 /* Models */,
 				5BD654162B1535F5005B00E7 /* HomeScreenView.swift */,
@@ -179,6 +182,7 @@
 				5BD49EEF2B20D9720087E472 /* Word.swift in Sources */,
 				5BD654172B1535F5005B00E7 /* HomeScreenView.swift in Sources */,
 				5BD49EED2B20C7710087E472 /* PromptManager.swift in Sources */,
+				5B57E70B2B2212FC00AB1690 /* LibraryManager.swift in Sources */,
 				5BD654202B16429F005B00E7 /* LevelButton.swift in Sources */,
 				5BD653DF2B0D1FA6005B00E7 /* ImagineThisApp.swift in Sources */,
 				5BD654222B1676F4005B00E7 /* Topic.swift in Sources */,

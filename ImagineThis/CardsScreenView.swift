@@ -12,18 +12,16 @@ import SwiftUI
 struct CardsScreenView: View {
 	
 	@State private var rotations: [Double] = [3, -3, 0]
-	@State private var sentences = ["A brave unicorn is teaching a group of kittens the art of flying.",
-					 "An adventurous penguin is discovering hidden treasures in a mystical forest.",
-					 "A wise owl is solving ancient riddles with a band of friendly ghosts."]
+	@State private var sentences: [String] = []
 	
 	@ObservedObject var userSelections: UserSelections
 	@State private var dragOffset = CGSize.zero
 	
+	
+	// optimize it
 	private let promptManager = PromptManager()
-	
+	let wordSet: [WordType: [Word]]
 	var onBack: () -> Void
-	
-	
 	
 	
 	var body: some View {
@@ -107,7 +105,7 @@ struct CardsScreenView: View {
 	
 	private func generateSentences() {
 		sentences = (0..<3).map({ _ in
-			promptManager.generatePrompt(for: userSelections.topic, complexity: userSelections.complexity)
+			promptManager.generateSentence(from: wordSet, complexity: userSelections.complexity)
 		})
 	}
 }
@@ -132,7 +130,7 @@ struct CardView: View {
 // Preview
 struct CardsScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		CardsScreenView(userSelections: UserSelections(), onBack: {
+		CardsScreenView(userSelections: UserSelections(), wordSet: [:], onBack: {
 			print("back button tapped")
 		})
 	}
