@@ -7,18 +7,20 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct CardsScreenView: View {
+	
 	@State private var rotations: [Double] = [3, -3, 0]
-	@State private var sentences = ["A brave unicorn is teaching a group of kittens the art of flying.",
-					 "An adventurous penguin is discovering hidden treasures in a mystical forest.",
-					 "A wise owl is solving ancient riddles with a band of friendly ghosts."]
+	@State private var sentences: [String] = []
 	
 	@ObservedObject var userSelections: UserSelections
 	@State private var dragOffset = CGSize.zero
 	
+	
+	// optimize it
+	private let promptManager = PromptManager()
+	let wordSet: [WordType: [Word]]
 	var onBack: () -> Void
+	
 	
 	var body: some View {
 		ZStack(alignment: .bottom) {
@@ -59,15 +61,30 @@ struct CardsScreenView: View {
 			.padding()
 		}
 		.edgesIgnoringSafeArea(.bottom)
+		.onAppear {
+			generateSentences()
+		}
 	}
 	
 	private func moveTopCardToEnd() {
 		dragOffset = .zero
 		if let lastSentence = sentences.last, let rotation = rotations.last {
+			print(lastSentence)
 			rotations.removeLast()
 			sentences.removeLast()
 			rotations.insert(rotation, at: 0)
 			sentences.insert(lastSentence, at: 0)
+		}
+		
+		
+		// temp fix for now - otherwise card disappears before moving to the bottom of the deck because sentences is a state object
+		// to consider having a cards array as State and only update the sentence on the card after moving to the bottom of the deck
+		
+		let sentence = promptManager.generateSentence(from: wordSet, complexity: userSelections.complexity)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+			withAnimation {
+				sentences[0] = sentence
+			}
 		}
 	}
 	
@@ -84,16 +101,22 @@ struct CardsScreenView: View {
 	@ViewBuilder
 	private func selectionsView() -> some View {
 		HStack {
-			Image(userSelections.category.label)
+			Image(userSelections.topic.label)
 				.resizable()
 				.scaledToFit()
 				.frame(width: 100)
 			Image("divider")
-			Image(userSelections.level.label)
+			Image(userSelections.complexity.label)
 				.resizable()
 				.scaledToFit()
 				.frame(width: 100)
 		}
+	}
+	
+	private func generateSentences() {
+		sentences = (0..<3).map({ _ in
+			promptManager.generateSentence(from: wordSet, complexity: userSelections.complexity)
+		})
 	}
 }
 
@@ -117,7 +140,7 @@ struct CardView: View {
 // Preview
 struct CardsScreenView_Previews: PreviewProvider {
 	static var previews: some View {
-		CardsScreenView(userSelections: UserSelections(), onBack: {
+		CardsScreenView(userSelections: UserSelections(), wordSet: [:], onBack: {
 			print("back button tapped")
 		})
 	}
