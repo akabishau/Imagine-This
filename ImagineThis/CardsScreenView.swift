@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct CardsScreenView: View {
 	
 	@State private var rotations: [Double] = [3, -3, 0]
@@ -71,10 +69,22 @@ struct CardsScreenView: View {
 	private func moveTopCardToEnd() {
 		dragOffset = .zero
 		if let lastSentence = sentences.last, let rotation = rotations.last {
+			print(lastSentence)
 			rotations.removeLast()
 			sentences.removeLast()
 			rotations.insert(rotation, at: 0)
 			sentences.insert(lastSentence, at: 0)
+		}
+		
+		
+		// temp fix for now - otherwise card disappears before moving to the bottom of the deck because sentences is a state object
+		// to consider having a cards array as State and only update the sentence on the card after moving to the bottom of the deck
+		
+		let sentence = promptManager.generateSentence(from: wordSet, complexity: userSelections.complexity)
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+			withAnimation {
+				sentences[0] = sentence
+			}
 		}
 	}
 	
