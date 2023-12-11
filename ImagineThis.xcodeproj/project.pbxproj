@@ -48,6 +48,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B57E70C2B26ACFB00AB1690 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5BD49EEC2B20C7710087E472 /* PromptManager.swift */,
+				5B57E70A2B2212FC00AB1690 /* LibraryManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		5B57E70D2B26AD1F00AB1690 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5BD654162B1535F5005B00E7 /* HomeScreenView.swift */,
+				5BD654192B153747005B00E7 /* CardsScreenView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		5BD653D22B0D1FA6005B00E7 = {
 			isa = PBXGroup;
 			children = (
@@ -67,13 +85,10 @@
 		5BD653DD2B0D1FA6005B00E7 /* ImagineThis */ = {
 			isa = PBXGroup;
 			children = (
-				5BD49EEE2B20D9720087E472 /* Word.swift */,
-				5BD49EEC2B20C7710087E472 /* PromptManager.swift */,
-				5B57E70A2B2212FC00AB1690 /* LibraryManager.swift */,
+				5B57E70C2B26ACFB00AB1690 /* Managers */,
 				5BD6541E2B164289005B00E7 /* Views */,
 				5BD6541B2B1641DE005B00E7 /* Models */,
-				5BD654162B1535F5005B00E7 /* HomeScreenView.swift */,
-				5BD654192B153747005B00E7 /* CardsScreenView.swift */,
+				5B57E70D2B26AD1F00AB1690 /* Screens */,
 				5BD653DE2B0D1FA6005B00E7 /* ImagineThisApp.swift */,
 				5BD653E22B0D1FA7005B00E7 /* Assets.xcassets */,
 				5BD653E42B0D1FA7005B00E7 /* Preview Content */,
@@ -92,6 +107,7 @@
 		5BD6541B2B1641DE005B00E7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5BD49EEE2B20D9720087E472 /* Word.swift */,
 				5BD6541C2B1641FA005B00E7 /* Complexity.swift */,
 				5BD654212B1676F4005B00E7 /* Topic.swift */,
 				5BD654232B168CD8005B00E7 /* UserSelections.swift */,
