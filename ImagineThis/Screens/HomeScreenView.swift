@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeScreenView: View {
 	
+	let libraryManager: LibraryManager
+	
 	@StateObject var userSelections = UserSelections()
 	@State private var showCardsView = false
 	
@@ -21,21 +23,24 @@ struct HomeScreenView: View {
 				.ignoresSafeArea(.all)
 			
 			if showCardsView {
-				CardsScreenView(userSelections: userSelections) {
+				
+				let wordSet = libraryManager.words(for: userSelections.topic, complexity: userSelections.complexity)
+				
+				CardsScreenView(userSelections: userSelections, wordSet: wordSet, onBack: {
 					withAnimation {
 						showCardsView = false
 					}
-				}
+				})
 			} else {
 				VStack {
 					Spacer()
 					HStack(spacing: 10) {
-						ForEach(Level.allCases, id: \.self) { level in
-							LevelButton(level: level, selectedLevel: $userSelections.level)
+						ForEach(Complexity.allCases, id: \.self) { level in
+							LevelButton(level: level, selectedLevel: $userSelections.complexity)
 						}
 					}
 					Spacer()
-					CategoryView(selectedCategory: $userSelections.category)
+					CategoryView(selectedCategory: $userSelections.topic)
 					Spacer()
 					startButton()
 				}
@@ -62,7 +67,7 @@ struct HomeScreenView: View {
 // TODO: - Move to the separate file when complete
 struct CategoryView: View {
 	
-	@Binding var selectedCategory: Category
+	@Binding var selectedCategory: Topic
 	
 	var body: some View {
 		VStack {
@@ -72,7 +77,7 @@ struct CategoryView: View {
 				.frame(width: 150)
 			
 			TabView(selection: $selectedCategory) {
-				ForEach(Category.allCases, id: \.self) { category in
+				ForEach(Topic.allCases, id: \.self) { category in
 					Image(category.imageName)
 						.resizable()
 						.scaledToFit()
@@ -83,7 +88,7 @@ struct CategoryView: View {
 			.frame(height: 350)
 
 			
-			CategoryIndicatorView(numberOfPages: Category.allCases.count, currentPageIndex: selectedCategory.index)
+			CategoryIndicatorView(numberOfPages: Topic.allCases.count, currentPageIndex: selectedCategory.index)
 			
 		}
 	}
@@ -109,5 +114,5 @@ struct CategoryIndicatorView: View {
 
 
 #Preview {
-	HomeScreenView()
+	HomeScreenView(libraryManager: LibraryManager())
 }

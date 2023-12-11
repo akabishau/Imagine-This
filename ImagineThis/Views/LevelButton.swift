@@ -9,8 +9,8 @@ import SwiftUI
 
 struct LevelButton: View {
 	
-	let level: Level
-	@Binding var selectedLevel: Level
+	let level: Complexity
+	@Binding var selectedLevel: Complexity
 	
 	
 	var body: some View {

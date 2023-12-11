@@ -7,27 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B57E70B2B2212FC00AB1690 /* LibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57E70A2B2212FC00AB1690 /* LibraryManager.swift */; };
+		5BD49EED2B20C7710087E472 /* PromptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD49EEC2B20C7710087E472 /* PromptManager.swift */; };
+		5BD49EEF2B20D9720087E472 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD49EEE2B20D9720087E472 /* Word.swift */; };
 		5BD653DF2B0D1FA6005B00E7 /* ImagineThisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD653DE2B0D1FA6005B00E7 /* ImagineThisApp.swift */; };
 		5BD653E32B0D1FA7005B00E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD653E22B0D1FA7005B00E7 /* Assets.xcassets */; };
 		5BD653E62B0D1FA7005B00E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BD653E52B0D1FA7005B00E7 /* Preview Assets.xcassets */; };
 		5BD654172B1535F5005B00E7 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD654162B1535F5005B00E7 /* HomeScreenView.swift */; };
 		5BD6541A2B153747005B00E7 /* CardsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD654192B153747005B00E7 /* CardsScreenView.swift */; };
-		5BD6541D2B1641FA005B00E7 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6541C2B1641FA005B00E7 /* Level.swift */; };
+		5BD6541D2B1641FA005B00E7 /* Complexity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6541C2B1641FA005B00E7 /* Complexity.swift */; };
 		5BD654202B16429F005B00E7 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6541F2B16429F005B00E7 /* LevelButton.swift */; };
-		5BD654222B1676F4005B00E7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD654212B1676F4005B00E7 /* Category.swift */; };
+		5BD654222B1676F4005B00E7 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD654212B1676F4005B00E7 /* Topic.swift */; };
 		5BD654242B168CD8005B00E7 /* UserSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD654232B168CD8005B00E7 /* UserSelections.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B57E70A2B2212FC00AB1690 /* LibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryManager.swift; sourceTree = "<group>"; };
+		5BD49EEC2B20C7710087E472 /* PromptManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptManager.swift; sourceTree = "<group>"; };
+		5BD49EEE2B20D9720087E472 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		5BD653DB2B0D1FA6005B00E7 /* ImagineThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagineThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD653DE2B0D1FA6005B00E7 /* ImagineThisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagineThisApp.swift; sourceTree = "<group>"; };
 		5BD653E22B0D1FA7005B00E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BD653E52B0D1FA7005B00E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5BD654162B1535F5005B00E7 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		5BD654192B153747005B00E7 /* CardsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsScreenView.swift; sourceTree = "<group>"; };
-		5BD6541C2B1641FA005B00E7 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		5BD6541C2B1641FA005B00E7 /* Complexity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complexity.swift; sourceTree = "<group>"; };
 		5BD6541F2B16429F005B00E7 /* LevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
-		5BD654212B1676F4005B00E7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		5BD654212B1676F4005B00E7 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		5BD654232B168CD8005B00E7 /* UserSelections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelections.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,6 +48,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B57E70C2B26ACFB00AB1690 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5BD49EEC2B20C7710087E472 /* PromptManager.swift */,
+				5B57E70A2B2212FC00AB1690 /* LibraryManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		5B57E70D2B26AD1F00AB1690 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5BD654162B1535F5005B00E7 /* HomeScreenView.swift */,
+				5BD654192B153747005B00E7 /* CardsScreenView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		5BD653D22B0D1FA6005B00E7 = {
 			isa = PBXGroup;
 			children = (
@@ -61,10 +85,10 @@
 		5BD653DD2B0D1FA6005B00E7 /* ImagineThis */ = {
 			isa = PBXGroup;
 			children = (
+				5B57E70C2B26ACFB00AB1690 /* Managers */,
 				5BD6541E2B164289005B00E7 /* Views */,
 				5BD6541B2B1641DE005B00E7 /* Models */,
-				5BD654162B1535F5005B00E7 /* HomeScreenView.swift */,
-				5BD654192B153747005B00E7 /* CardsScreenView.swift */,
+				5B57E70D2B26AD1F00AB1690 /* Screens */,
 				5BD653DE2B0D1FA6005B00E7 /* ImagineThisApp.swift */,
 				5BD653E22B0D1FA7005B00E7 /* Assets.xcassets */,
 				5BD653E42B0D1FA7005B00E7 /* Preview Content */,
@@ -83,8 +107,9 @@
 		5BD6541B2B1641DE005B00E7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5BD6541C2B1641FA005B00E7 /* Level.swift */,
-				5BD654212B1676F4005B00E7 /* Category.swift */,
+				5BD49EEE2B20D9720087E472 /* Word.swift */,
+				5BD6541C2B1641FA005B00E7 /* Complexity.swift */,
+				5BD654212B1676F4005B00E7 /* Topic.swift */,
 				5BD654232B168CD8005B00E7 /* UserSelections.swift */,
 			);
 			path = Models;
@@ -169,11 +194,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD6541A2B153747005B00E7 /* CardsScreenView.swift in Sources */,
-				5BD6541D2B1641FA005B00E7 /* Level.swift in Sources */,
+				5BD6541D2B1641FA005B00E7 /* Complexity.swift in Sources */,
+				5BD49EEF2B20D9720087E472 /* Word.swift in Sources */,
 				5BD654172B1535F5005B00E7 /* HomeScreenView.swift in Sources */,
+				5BD49EED2B20C7710087E472 /* PromptManager.swift in Sources */,
+				5B57E70B2B2212FC00AB1690 /* LibraryManager.swift in Sources */,
 				5BD654202B16429F005B00E7 /* LevelButton.swift in Sources */,
 				5BD653DF2B0D1FA6005B00E7 /* ImagineThisApp.swift in Sources */,
-				5BD654222B1676F4005B00E7 /* Category.swift in Sources */,
+				5BD654222B1676F4005B00E7 /* Topic.swift in Sources */,
 				5BD654242B168CD8005B00E7 /* UserSelections.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
